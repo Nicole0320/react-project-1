@@ -13,7 +13,6 @@ class TodoInput extends React.Component{
 
     submit(e){
         if(e.key === 'Enter'){
-            console.log(e.target.value);
             this.props.onSubmit(e);
         }
     }
