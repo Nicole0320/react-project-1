@@ -16,6 +16,7 @@ class App extends Component {
       ]
     }
   }
+
   render() {
     let todos = this.state.todoList.map((item,index)=>{
       return (
@@ -29,13 +30,19 @@ class App extends Component {
       <div className="App">
         <h1>我的待办</h1>
         <div className='inputWrapper'>
-          <TodoInput content={this.state.newTodo}/>
+          <TodoInput content={this.state.newTodo} onSubmit={this.addTodo.bind(this)}/>
         </div>
         <ol>
           {todos}
         </ol>
       </div>
     );
+  }
+
+  addTodo(content){
+    this.state.todoList.push({
+      id: 3, title: content
+    })
   }
 }
 
