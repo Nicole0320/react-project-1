@@ -1,0 +1,15 @@
+.TodoItem{
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+}
+
+.TodoItem>.title{
+    flex-grow: 1;
+    padding: 0 0.5em;
+}
+
+.TodoItem>.completed+.title{
+    text-decoration: line-through;
+    color: #999;
+}

@@ -34,7 +34,7 @@ class App extends Component {
             onChange={this.changeTitile.bind(this)}
             onSubmit={this.addTodo.bind(this)}/>
         </div>
-        <ol>
+        <ol className="todoList">
           {todos}
         </ol>
       </div>
@@ -57,13 +57,11 @@ class App extends Component {
   delete(e, todo){
     todo.deleted = true;
     this.setState(this.state);
-    console.log(this.state);
   }
 
   toggle(e,todo){
     todo.status = todo.status === 'completed' ? '' : 'completed';
     this.setState(this.state);
-    console.log(todo);
   }
 
   changeTitile(event){
