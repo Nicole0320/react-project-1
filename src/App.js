@@ -22,9 +22,9 @@ class App extends Component {
         <li>
           <TodoItem todo={item}/>
         </li>
-      )
+        )
     });
-
+    console.log(todos);
     return (
       <div className="App">
         <h1>我的待办</h1>
