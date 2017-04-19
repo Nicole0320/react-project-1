@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-.TodoItem>input[type="checkbox"]{
+.TodoItem>input{
     color: #ff4500;
     border: 1px solid #ffab66;
     background-color: white;
@@ -16,15 +16,17 @@
     padding: 0 0.5em;
 }
 
-.TodoItem>.completed+.title{
+.TodoItem>.completed~.title{
     text-decoration: line-through;
     color: #999;
 }
 
 .TodoItem>button{
+    color: #ffab66;
+    border: none;
+    background-color: transparent;
+}
+
+.TodoItem>button:hover{
     color: #ff4500;
-    border: 1px solid #ffab66;
-    background-color: white;
-    padding: 1px 4px;
-    border-radius: 4px;
 }

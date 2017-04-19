@@ -22,7 +22,7 @@ class App extends Component {
       return (
         <li key={index}>
           <TodoItem todo={item} onToggle={this.toggle.bind(this)}
-            onDelete={this.delete.bind(this)}/>
+            onDelete={this.delete.bind(this)}  id={item.id}/>
         </li>
         )
     });
@@ -48,7 +48,7 @@ class App extends Component {
 
   addTodo(event){
     this.state.todoList.push({
-      id: idMaker(),
+      id: this.state.todoList.length,
       title: event.target.value,
       status: null,
       deleted: false
@@ -75,13 +75,6 @@ class App extends Component {
       todoList: this.state.todoList
     });
   }
-}
-
-
-let id = 0;
-function idMaker(){
-  id++;
-  return id;
 }
 
 export default App;
