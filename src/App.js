@@ -4,13 +4,14 @@ import './reset.css';
 import './App.css';
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
+import * as localStorage from './localStore'
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
       newTodo: '',
-      todoList:[]
+      todoList: localStorage.load('todoList') || []
     }
   }
 
@@ -51,24 +52,28 @@ class App extends Component {
     this.setState({
       newTodo: '',
       todoList: this.state.todoList
-    })
+    });
+    localStorage.save('todoList', this.state.todoList);
   }
 
   delete(e, todo){
     todo.deleted = true;
     this.setState(this.state);
+    localStorage.save('todoList', this.state.todoList);
   }
 
   toggle(e,todo){
     todo.status = todo.status === 'completed' ? '' : 'completed';
     this.setState(this.state);
+    localStorage.save('todoList', this.state.todoList);
   }
 
   changeTitile(event){
     this.setState({
       newTodo: event.target.value,
       todoList: this.state.todoList
-    })
+    });
+    localStorage.save('todoList', this.state.todoList);
   }
 }
 
