@@ -6,6 +6,16 @@ import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
 import * as localStorage from './localStore'
 
+
+//测试leancloud
+// var TestObject = AV.Object.extend('TestObject');
+// var testObject = new TestObject();
+// testObject.save({
+//   words: 'Hello World!'
+// }).then(function(object) {
+//   alert('LeanCloud Rocks!');
+// })
+
 class App extends Component {
   constructor(props){
     super(props);
