@@ -4,11 +4,8 @@
     align-items: center;
 }
 
-.TodoItem>input{
-    color: #ff4500;
-    border: 1px solid #ffab66;
-    background-color: white;
-    border-radius: 4px;
+.TodoItem>input[type="checkbox"]{
+    display: none;
 }
 
 .TodoItem>.title{
@@ -22,11 +19,14 @@
 }
 
 .TodoItem>button{
-    color: #ffab66;
     border: none;
     background-color: transparent;
 }
 
-.TodoItem>button:hover{
-    color: #ff4500;
+.TodoItem i{
+    color: #ff5555;
+}
+
+.TodoItem i:hover{
+    color: #ffcc99;
 }

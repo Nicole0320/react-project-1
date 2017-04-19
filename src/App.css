@@ -11,7 +11,8 @@
 }
 
 .App>.todoList>li:nth-child(odd){
-  background: rgba(252, 220, 195, 1);
+  /*background: rgba(252, 220, 195, 1);*/
+  background: #ffdddd;
 }
 
 .App>.todoList>li:nth-child(even){
