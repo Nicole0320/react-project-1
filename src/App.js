@@ -4,7 +4,6 @@ import './reset.css';
 import './App.css';
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
-import * as localStorage from './localStore'
 
 
 //测试leancloud
@@ -21,7 +20,7 @@ class App extends Component {
     super(props);
     this.state = {
       newTodo: '',
-      todoList: localStorage.load('todoList') || []
+      todoList: []
     }
   }
 
@@ -53,7 +52,7 @@ class App extends Component {
   }
 
   componentDidUpdate(){
-    localStorage.save('todoList', this.state.todoList);
+    
   }
 
   addTodo(event){
