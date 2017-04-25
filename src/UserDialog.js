@@ -8,8 +8,8 @@ export default class UserDialog extends Component{
         this.state={
             selected: 'signUp',
             formData: {
-                username: 'aa',
-                passsword: 'bb'
+                username: '',
+                password: ''
             }
         }
     }
@@ -22,7 +22,7 @@ export default class UserDialog extends Component{
 
     signUp(e){
         e.preventDefault();
-        let {username,passsword} = this.state.formData;
+        let {username,password} = this.state.formData;
         let success = (user)=>{
             console.log(user);
             this.props.onSignUp.call(null, user);
@@ -30,7 +30,7 @@ export default class UserDialog extends Component{
         let error = (error)=>{
             console.log(error);
         }
-        signUp(username, passsword, success, error)
+        signUp(username, password, success, error)
     }
 
     signIn(e){}
@@ -52,8 +52,8 @@ export default class UserDialog extends Component{
                 </div>
                 <div className="row">
                     <label htmlFor="signup-password">密码</label>
-                    <input type="passsword" id="signup-password"
-                        value={this.state.formData.passsword}
+                    <input type="password" id="signup-password"
+                        value={this.state.formData.password}
                         onChange={this.changeFormData.bind(this, 'password')}/>
                 </div>
                 <div className="row action">
@@ -71,8 +71,8 @@ export default class UserDialog extends Component{
                 </div>
                 <div className="row">
                     <label htmlFor="signin-password">密码</label>
-                    <input type="passsword" id="signin-password"
-                        value={this.state.formData.passsword}
+                    <input type="password" id="signin-password"
+                        value={this.state.formData.password}
                         onChange={this.changeFormData.bind(this, 'password')}/>
                 </div>
                 <div className="row action">
