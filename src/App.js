@@ -6,20 +6,11 @@ import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
 import UserDialog from './UserDialog'
 
-
-//测试leancloud
-// var TestObject = AV.Object.extend('TestObject');
-// var testObject = new TestObject();
-// testObject.save({
-//   words: 'Hello World!'
-// }).then(function(object) {
-//   alert('LeanCloud Rocks!');
-// })
-
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      user: {},
       newTodo: '',
       todoList: []
     }
@@ -39,7 +30,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>我的待办</h1>
+        <h1>{this.state.user.username||'我'}的待办</h1>
         <div className='inputWrapper'>
           <TodoInput content={this.state.newTodo} 
             onChange={this.changeTitile.bind(this)}
@@ -48,13 +39,18 @@ class App extends Component {
         <ol className="todoList">
           {todos}
         </ol>
-        <UserDialog />
+        {this.state.user.id ? null : <UserDialog onSignUp={this.onSignUp.bind(this)}/>}
       </div>
     );
   }
 
+  onSignUp(user){
+    let stateCopy = JSON.parse(JSON.stringify(this.state));
+    stateCopy.user = user;
+    this.setState(stateCopy);
+  }
+
   componentDidUpdate(){
-    
   }
 
   addTodo(event){

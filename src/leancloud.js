@@ -8,3 +8,29 @@ AV.init({
 });
 
 export default AV;
+
+export function signUp(username, password, successFn, errorFn){
+  //新建AVUser实例对象
+  var user = new AV.User();
+  //设置用户名
+  user.setUsername(username);
+  //设置密码
+  user.setPassword(password);
+  //设置处理函数
+  user.signUp().then(function(loginedUser){
+    let user = getUserFromAVUser(loginedUser);
+    successFn.call(null, user);
+  }, function(error){
+    errorFn.call(null, error);
+  });
+
+  return undefined;
+}
+
+function getUserFromAVUser(AVUser){
+  return {
+    id: AVUser.id,
+    //...是展开运算符，把 AVUser.atrributes 的属性加入当前对象
+    ...AVUser.attributes
+  }
+}
