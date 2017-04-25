@@ -25,6 +25,10 @@
     padding: 1em;
 }
 
+.UserDialog>nav:first-child label{
+    cursor: pointer;
+}
+
 .UserDialog>nav:first-child>input[type="radio"]:not(:first-child){
     margin-left: 2em;
 }
