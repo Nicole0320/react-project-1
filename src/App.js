@@ -21,7 +21,22 @@ class App extends Component {
     }
   }
 
-  render() {
+  // 初始化加载列表
+  componentWillMount(){
+
+      function success(list){
+        this.state.todoList = list;
+        this.setState({
+          todoList: this.state.todoList
+        });
+      }
+
+      function error(){}
+
+      loadList(this.state.user.id, success.bind(this), error);
+  }
+
+  render(){
     let todos = this.state.todoList
       .filter((item)=>!item.deleted)
       .map((item,index)=>{
@@ -78,7 +93,6 @@ class App extends Component {
     };
 
     function success(num){
-      console.log(this);
       newItem.id = num;
       this.state.todoList.push(
         newItem
@@ -91,7 +105,6 @@ class App extends Component {
 
     function error(){}
 
-    console.log('要调用save了')
     saveListTable(newItem,this.state.user,success.bind(this),error);
 
   }
@@ -99,16 +112,12 @@ class App extends Component {
   delete(e, todo){
     todo.deleted = true;
     this.setState(this.state);
-    console.log('调用delete：');
-    console.log(todo);
     updateListTable(this.state.user, todo.id, 'deleted', true);
   }
 
   toggle(e,todo){
     todo.status = todo.status === 'completed' ? '' : 'completed';
     this.setState(this.state);
-    console.log('调用toggle：');
-    console.log(this.state.user);
     updateListTable(this.state.user, todo.id, 'status', todo.status);
   }
 

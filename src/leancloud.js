@@ -64,7 +64,28 @@ export function signOut(){
 }
 
 //加载待办事项列表
-export function loadList(userID){}
+export function loadList(userID, successFn, errorFn){
+  var className = 'todo_' + userID;
+  var list = [];
+  AV.Query.doCloudQuery(`select * from ${className}`)
+  .then(function(xxx){
+
+    for(let i=0; i<xxx.results.length; i++){
+      let obj = {
+        id: xxx.results[i].id,
+        ...xxx.results[i].attributes
+      };
+      list.push(obj);
+
+    }
+      
+    successFn.call(null, list);
+
+  },function(error){
+    console.log(error);
+    errorFn.call();
+  });
+}
 
 //更新事项列表
 export function updateListTable(user, itemId, key, value){
@@ -78,13 +99,13 @@ export function updateListTable(user, itemId, key, value){
 export function saveListTable(item, user, successFn, errorFn){
    var TodoList = AV.Object.extend("todo_"+user.id);
    var todoList = new TodoList();
-   todoList.set('name', user.name);
+   todoList.set('username', user.name);
    todoList.set('title', item.title);
    todoList.set('status', item.status);
    todoList.set('deleted', item.deleted);
    todoList.save().then(function(todo){
      successFn.call(null,todo.id);
-     alert('保存成功');
+    //  alert('保存成功');
    },function(error){
      errorFn.call(null);
      alert(error);
