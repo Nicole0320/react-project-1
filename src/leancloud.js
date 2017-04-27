@@ -27,11 +27,11 @@ export function signUp(username, password, successFn, errorFn){
   return undefined;
 }
 
-export function signIn(username, password, sussessFn, errorFn){
+export function signIn(username, password, successFn, errorFn){
   AV.User.logIn(username, password).then(function (loginedUser){
     console.log(loginedUser);
     let user = getUserFromAVUser(loginedUser);
-    sussessFn.call(null, user);
+    successFn.call(null, user);
   },function(error){
     errorFn.call(null, error);
   });
@@ -61,4 +61,32 @@ export function signOut(){
   AV.User.logOut();
 
   return undefined;
+}
+
+//加载待办事项列表
+export function loadList(userID){}
+
+//更新事项列表
+export function updateListTable(user, itemId, key, value){
+  var className = 'todo_'+user.id;
+  var item = AV.Object.createWithoutData(className, itemId);
+  item.set(key, value);
+  item.save();
+}
+
+//保存事项列表
+export function saveListTable(item, user, successFn, errorFn){
+   var TodoList = AV.Object.extend("todo_"+user.id);
+   var todoList = new TodoList();
+   todoList.set('name', user.name);
+   todoList.set('title', item.title);
+   todoList.set('status', item.status);
+   todoList.set('deleted', item.deleted);
+   todoList.save().then(function(todo){
+     successFn.call(null,todo.id);
+     alert('保存成功');
+   },function(error){
+     errorFn.call(null);
+     alert(error);
+   })
 }

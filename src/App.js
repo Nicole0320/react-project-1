@@ -7,6 +7,9 @@ import TodoItem from './TodoItem';
 import UserDialog from './UserDialog';
 import {getCurrentUser} from './leancloud';
 import {signOut} from './leancloud';
+import {loadList} from './leancloud';
+import {saveListTable} from './leancloud';
+import {updateListTable} from './leancloud';
 
 class App extends Component {
   constructor(props){
@@ -67,26 +70,46 @@ class App extends Component {
   }
 
   addTodo(event){
-    this.state.todoList.push({
-      id: this.state.todoList.length,
+    var newItem = {
+      id: null,
       title: event.target.value,
-      status: null,
+      status: '',
       deleted: false
-    });
-    this.setState({
-      newTodo: '',
-      todoList: this.state.todoList
-    });
+    };
+
+    function success(num){
+      console.log(this);
+      newItem.id = num;
+      this.state.todoList.push(
+        newItem
+      );
+      this.setState({
+        newTodo: '',
+        todoList: this.state.todoList
+      });
+    }
+
+    function error(){}
+
+    console.log('要调用save了')
+    saveListTable(newItem,this.state.user,success.bind(this),error);
+
   }
 
   delete(e, todo){
     todo.deleted = true;
     this.setState(this.state);
+    console.log('调用delete：');
+    console.log(todo);
+    updateListTable(this.state.user, todo.id, 'deleted', true);
   }
 
   toggle(e,todo){
     todo.status = todo.status === 'completed' ? '' : 'completed';
     this.setState(this.state);
+    console.log('调用toggle：');
+    console.log(this.state.user);
+    updateListTable(this.state.user, todo.id, 'status', todo.status);
   }
 
   changeTitile(event){
