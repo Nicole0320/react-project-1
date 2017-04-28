@@ -23,7 +23,7 @@ class App extends Component {
 
   // 初始化加载列表
   componentWillMount(){
-    if(this.state.user){
+    if(this.state.user.id){
       this.initTodoList.call(this);
     }
   }
