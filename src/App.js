@@ -10,6 +10,7 @@ import {signOut} from './leancloud';
 import {loadList} from './leancloud';
 import {saveListTable} from './leancloud';
 import {updateListTable} from './leancloud';
+import copyByJSON from './copyByJSON';
 
 class App extends Component {
   constructor(props){
@@ -74,14 +75,14 @@ class App extends Component {
 
   signOut(e){
       signOut();
-      let stateCopy = JSON.parse(JSON.stringify(this.state));
+      let stateCopy = copyByJSON(this.state);
       stateCopy.user = {};
       stateCopy.todoList = [];
       this.setState(stateCopy);
   }
 
   onSignUpOrSignIn(user){
-    let stateCopy = JSON.parse(JSON.stringify(this.state));
+    let stateCopy = copyByJSON(this.state);
     stateCopy.user = user;
     this.setState(stateCopy);
     this.initTodoList.call(this);

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {signUp} from './leancloud';
 import {signIn} from './leancloud';
 import './UserDialog.css';
+import copyByJSON from './copyByJSON';
 
 export default class UserDialog extends Component{
     constructor(props){
@@ -63,7 +64,7 @@ export default class UserDialog extends Component{
     }
 
     changeFormData(key,e){
-        let stateCopy = JSON.parse(JSON.stringify(this.state)); //借用JSON实现深拷贝
+        let stateCopy = copyByJSON(this.state);
         stateCopy.formData[key] = e.target.value;
         this.setState(stateCopy);
     }
