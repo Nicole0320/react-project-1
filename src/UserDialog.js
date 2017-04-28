@@ -54,6 +54,21 @@ export default class UserDialog extends Component{
                 case 210:
                     alert('用户名与密码不匹配');
                     break;
+                case 100:
+                    alert('无法连接到服务器，请检查网络连接');
+                    break;
+                case 124:
+                    alert('请求超时，请检查网络连接是否正常');
+                    break;
+                case 211:
+                    alert('找不到用户');
+                    break;
+                case 124:
+                    alert('请求超时，请检查网络连接是否正常');
+                    break;
+                case 201:
+                    alert('密码不能为空');
+                    break;
                 default:
                     alert(error);
                     break;
