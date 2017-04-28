@@ -67,12 +67,12 @@ export function loadList(userID, successFn, errorFn){
   var className = 'todo_' + userID;
   var list = [];
   AV.Query.doCloudQuery(`select * from ${className}`)
-  .then(function(xxx){
+  .then(function(res){
 
-    for(let i=0; i<xxx.results.length; i++){
+    for(let i=0; i<res.results.length; i++){
       let obj = {
-        id: xxx.results[i].id,
-        ...xxx.results[i].attributes
+        id: res.results[i].id,
+        ...res.results[i].attributes
       };
       list.push(obj);
 
