@@ -99,7 +99,7 @@ export function updateListTable(user, itemId, key, value){
 export function saveListTable(item, user, successFn, errorFn){
    var TodoList = AV.Object.extend("todo_"+user.id);
    var todoList = new TodoList();
-   todoList.set('username', user.name);
+   todoList.set('username', user.username);
    todoList.set('title', item.title);
    todoList.set('status', item.status);
    todoList.set('deleted', item.deleted);

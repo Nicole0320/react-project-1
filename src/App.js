@@ -23,17 +23,21 @@ class App extends Component {
 
   // 初始化加载列表
   componentWillMount(){
+    if(this.state.user){
+      this.initTodoList.call(this);
+    }
+  }
 
-      function success(list){
-        this.state.todoList = list;
-        this.setState({
-          todoList: this.state.todoList
-        });
-      }
+  initTodoList(){
+    function success(list){
+      this.state.todoList = list;
+      this.setState({
+        todoList: this.state.todoList
+      });
+    }
 
-      function error(){}
-
-      loadList(this.state.user.id, success.bind(this), error);
+    function error(){}
+    loadList(this.state.user.id, success.bind(this), error);
   }
 
   render(){
@@ -72,6 +76,7 @@ class App extends Component {
       signOut();
       let stateCopy = JSON.parse(JSON.stringify(this.state));
       stateCopy.user = {};
+      stateCopy.todoList = [];
       this.setState(stateCopy);
   }
 
@@ -79,6 +84,7 @@ class App extends Component {
     let stateCopy = JSON.parse(JSON.stringify(this.state));
     stateCopy.user = user;
     this.setState(stateCopy);
+    this.initTodoList.call(this);
   }
 
   componentDidUpdate(){
