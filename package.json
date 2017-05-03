@@ -18,5 +18,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "http://nicole-d.party/react-project-1/build"
+  "homepage": "https://nicole0320.github.io/react-project-1/build"
 }
