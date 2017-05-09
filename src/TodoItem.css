@@ -8,6 +8,10 @@
     display: none;
 }
 
+.TodoItem>input[type="checkbox"]+label{
+    text-decoration: none;
+}
+
 .TodoItem>.title{
     flex-grow: 1;
     padding: 0 0.5em;
