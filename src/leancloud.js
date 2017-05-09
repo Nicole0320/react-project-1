@@ -74,7 +74,7 @@ export function loadList(userID, successFn, errorFn){
         id: res.results[i].id,
         ...res.results[i].attributes
       };
-      list.push(obj);
+      list.unshift(obj);
 
     }
       

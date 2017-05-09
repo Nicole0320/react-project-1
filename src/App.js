@@ -101,7 +101,7 @@ class App extends Component {
 
     function success(num){
       newItem.id = num;
-      this.state.todoList.push(
+      this.state.todoList.unshift(
         newItem
       );
       this.setState({
