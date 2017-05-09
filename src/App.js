@@ -91,10 +91,10 @@ class App extends Component {
   componentDidUpdate(){
   }
 
-  addTodo(event){
+  addTodo(value){
     var newItem = {
       id: null,
-      title: event.target.value,
+      title: value,
       status: '',
       deleted: false
     };

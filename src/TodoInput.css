@@ -1,5 +1,9 @@
 .TodoInput{
     width: 100%;
+    display: flex;
+}
+
+.TodoInput>.InputBar{
     line-height: 2;
     margin-bottom: 1em;
     font-size: 16px;
@@ -7,8 +11,30 @@
     border: 1px solid #ff9999;
     box-shadow: inset 0 0 2px 0 #ff9999;
     border-radius: 4px;
+    flex-grow: 1;
+    display: block;
 }
 
-.TodoInput:focus{
+.TodoInput>.InputBar:focus{
     outline-color: #ffcc99;
+}
+
+.TodoInput>button{
+    margin-left: 10px;
+    color: #ff5555;
+    background: #fff;
+    line-height: 2;
+    margin-bottom: 1em;
+    font-size: 16px;
+    padding: 0 0.5em;
+    border: 1px solid #ff9999;
+    box-shadow: inset 0 0 2px 0 #ff9999;
+    border-radius: 4px;
+    display: block;
+    cursor: pointer;
+}
+
+.TodoInput>button:hover{
+    box-shadow: 0 0 2px 1px #ffcccc;
+    color: #ffcc99;
 }
