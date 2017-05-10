@@ -29,6 +29,7 @@
 
 .TodoItem i{
     color: #ff5555;
+    cursor: pointer;
 }
 
 .TodoItem i:hover{

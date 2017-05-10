@@ -21,8 +21,8 @@
 
 .TodoInput>button{
     margin-left: 10px;
-    color: #ff5555;
-    background: #fff;
+    background: #ff9999;
+    color: #fff;
     line-height: 2;
     margin-bottom: 1em;
     font-size: 16px;
@@ -36,5 +36,6 @@
 
 .TodoInput>button:hover{
     box-shadow: 0 0 2px 1px #ffcccc;
-    color: #ffcc99;
+    border: 1px solid #ffaaaa;
+    background-color: #ffaaaa;
 }

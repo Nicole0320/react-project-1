@@ -12,7 +12,8 @@
 
 
 .App>h1>button{
-  background: #fff;
+  background: #ff9999;
+  color: #fff;
   border: 1px solid #ff9999;
   padding: 3px 5px;
   border-radius: 3px;
@@ -22,12 +23,11 @@
 
 .App>h1>button:hover{
   box-shadow: 0 0 2px 1px #ffcccc;
-  color: #ff6666;
-  /*background: #ffeeee;*/
+  border: 1px solid #ffaaaa;
+  background-color: #ffaaaa;
 }
 
 .App>.todoList>li:nth-child(odd){
-  /*background: rgba(252, 220, 195, 1);*/
   background: #ffdddd;
 }
 
