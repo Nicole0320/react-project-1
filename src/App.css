@@ -2,7 +2,7 @@
   color: #333;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.7);
   margin: 2em;
   padding: 0 1em;
   min-height: 20em;

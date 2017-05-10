@@ -5,12 +5,23 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(50, 50, 50, 0.2);
+    background-image: url('./images/bg-sign.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    background-color: rgba(33, 33, 33, 0.2);
 
     /*内容居中*/
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-aspect-ratio: 1280/854){
+    .UserDialog-Wrapper {
+      background-size: auto 100vh;
+    }
 }
 
 .UserDialog{
