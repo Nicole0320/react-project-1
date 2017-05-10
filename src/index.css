@@ -5,7 +5,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100vw;
-  background-color: #fff;
+  background-color: yellow;
 }
 
 @media (max-aspect-ratio: 1280/854){
