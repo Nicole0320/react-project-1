@@ -1,5 +1,6 @@
 body {
-  background-image: url('./images/bg-app.jpg');
+  /*background-image: url('./images/bg-app.jpg');*/
+  background-image: url(https://pixabay.com/get/e830b7092ffd033ed95c4518b7484f9fe577e0d004b0154891f4c37fa3e9b4_640.jpg);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
