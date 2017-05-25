@@ -1,6 +1,6 @@
 import React from 'react';
 import './TodoInput.css';
-import './iconfont/iconfont.css'
+import './../public/iconfont/iconfont.css'
 
 class TodoInput extends React.Component{
     constructor(props){

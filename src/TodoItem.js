@@ -1,6 +1,6 @@
 import React from 'react';
 import './TodoItem.css';
-import './iconfont/iconfont.css'
+import './../public/iconfont/iconfont.css'
 
 class TodoItem extends React.Component{
     render(){
