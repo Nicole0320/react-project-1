@@ -178,7 +178,7 @@ export default class UserDialog extends Component{
                         <input type="text" value={this.state.formData.email}
                             onChange={this.changeFormData.bind(this, 'email')}/>
                     </div>
-                    <div className="row actions">
+                    <div className="row action">
                         <button type="submit">发送重置邮件</button>
                         <button onClick={this.cancelResetPassword.bind(this)}>取消</button>
                     </div>

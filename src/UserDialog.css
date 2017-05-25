@@ -104,3 +104,11 @@
     background-color: #ff5555;
     color: #fff;
 }
+
+.UserDialog .forgotPassword > h3 { 
+    padding: 1em; 
+    text-align: center;
+}
+.UserDialog .forgotPassword > form {
+    padding: 0 1em 1em;
+}
