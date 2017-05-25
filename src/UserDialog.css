@@ -18,7 +18,7 @@
     align-items: center;
 }
 
-@media (max-aspect-ratio: 1280/854){
+@media (max-aspect-ratio: 1280/960){
     .UserDialog-Wrapper {
       background-size: auto 100vh;
     }
