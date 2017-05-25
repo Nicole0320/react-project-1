@@ -9,13 +9,15 @@ AV.init({
 
 export default AV;
 
-export function signUp(username, password, successFn, errorFn){
+export function signUp(username, password, email, successFn, errorFn){
   //新建AVUser实例对象
   var user = new AV.User();
   //设置用户名
   user.setUsername(username);
   //设置密码
   user.setPassword(password);
+  //设置邮箱
+  user.setEmail(email);
   //设置处理函数
   user.signUp().then(function(loginedUser){
     let user = getUserFromAVUser(loginedUser);
