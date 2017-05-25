@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {signUp} from './leancloud';
-import {signIn} from './leancloud';
+import {signIn, signUp, sendPasswordResetEmail} from './leancloud';
 import './UserDialog.css';
 import copyByJSON from './copyByJSON';
 
@@ -92,7 +91,10 @@ export default class UserDialog extends Component{
         this.setState(stateCopy);
     }
 
-    resetPassword(){}
+    resetPassword(e){
+        e.preventDefault();
+        sendPasswordResetEmail(this.state.formData.email);
+    }
 
     cancelResetPassword(e){
         // e.preventDefault();
