@@ -120,6 +120,7 @@ export default class UserDialog extends Component{
                 </div>
                 <div className="row action">
                     <button type="submit">登录</button>
+                     <a href="javascript:;">忘记密码</a>
                 </div>
             </form>
         );
