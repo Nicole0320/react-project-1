@@ -85,8 +85,11 @@
     outline-color: #ffcc99;
 }
 
-.UserDialog form>.action{
+.UserDialog form>.row.action{
     padding-left: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .UserDialog form>.action>button{
