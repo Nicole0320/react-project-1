@@ -4,6 +4,7 @@ import './UserDialog.css';
 import copyByJSON from './copyByJSON';
 import SignUpForm from './SignUpForm';
 import SignInForm from './SignInForm';
+import ForgotPasswordForm from './ForgotPasswordForm';
 
 export default class UserDialog extends Component{
     constructor(props){
@@ -140,27 +141,14 @@ export default class UserDialog extends Component{
             </div>
         )
 
-        let forgotPassword = (
-            <div className="forgotPassword">
-                <h3>重置密码</h3>
-                <form className="forgotPassword" onSubmit={this.resetPassword.bind(this)}>
-                    <div className="row">
-                        <label htmlFor="email">邮箱</label>
-                        <input type="text" value={this.state.formData.email}
-                            onChange={this.changeFormData.bind(this, 'email')}/>
-                    </div>
-                    <div className="row action">
-                        <button type="submit">发送重置邮件</button>
-                        <button onClick={this.cancelResetPassword.bind(this)}>取消</button>
-                    </div>
-                </form>
-            </div>
-        )
-
         return (
         <div className="UserDialog-Wrapper">
             <div className="UserDialog">
-                {this.state.selectedTab === 'signInOrSignUp' ? signInOrSignUp : forgotPassword}
+                {this.state.selectedTab === 'signInOrSignUp' ? signInOrSignUp : 
+                    <ForgotPasswordForm formData={this.state.formData}
+                     onSubmit={this.resetPassword.bind(this)}
+                     onChange={this.changeFormData.bind(this)}
+                     onSignIn={this.cancelResetPassword.bind(this)}/>}
             </div>
         </div>
         )
