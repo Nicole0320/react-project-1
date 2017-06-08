@@ -2,15 +2,13 @@ import React, {Component} from 'react';
 import {signIn, signUp, sendPasswordResetEmail} from './leancloud';
 import './UserDialog.css';
 import copyByJSON from './copyByJSON';
-import SignUpForm from './SignUpForm';
-import SignInForm from './SignInForm';
 import ForgotPasswordForm from './ForgotPasswordForm';
+import SignInOrSignUp from './SignInOrSignUp';
 
 export default class UserDialog extends Component{
     constructor(props){
         super(props);
         this.state={
-            selected: 'signUp', //signIn
             selectedTab: 'signInOrSignUp', //forgotPassword
             formData: {
                 username: '',
@@ -18,12 +16,6 @@ export default class UserDialog extends Component{
                 email: ''
             }
         }
-    }
-
-    switch(e){
-        this.setState({
-            selected: e.target.value
-        })
     }
 
     signUp(e){
@@ -110,45 +102,22 @@ export default class UserDialog extends Component{
     }
 
     render(){
-
-        let signInOrSignUp = (
-            <div className="signInOrSignUp">
-                <nav>
-                    <input type="radio" id="sign-up" name="nav"
-                        className={this.state.selected === "signUp" ? "checked" : null}
-                        value="signUp" checked={this.state.selected === "signUp"}
-                        onChange={this.switch.bind(this)}/>
-                    <label htmlFor="sign-up">注册</label>
-                    <input type="radio" id="sign-in" name="nav"
-                        className={this.state.selected === "signIn" ? "checked" : null}
-                        value="signIn" checked={this.state.selected === "signIn"}
-                        onChange={this.switch.bind(this)}/>
-                    <label htmlFor="sign-in">登录</label>
-                </nav>
-                <div className="panes">
-                    {this.state.selected === 'signUp' ? 
-                        <SignUpForm formData={this.state.formData}
-                          onSubmit={this.signUp.bind(this)}
-                          onChange={this.changeFormData.bind(this)}/>
-                        : null}
-                    {this.state.selected === 'signIn' ?
-                        <SignInForm formData={this.state.formData}
-                          onSubmit={this.signIn.bind(this)}
-                          onChange={this.changeFormData.bind(this)}
-                          onForgotPassword={this.showForgotPassword.bind(this)}/>
-                        : null}
-                </div>
-            </div>
-        )
-
         return (
         <div className="UserDialog-Wrapper">
             <div className="UserDialog">
-                {this.state.selectedTab === 'signInOrSignUp' ? signInOrSignUp : 
+                {this.state.selectedTab === 'signInOrSignUp' ? 
+                    <SignInOrSignUp formData={this.state.formData}
+                     onSignIn={this.signIn.bind(this)}
+                     onSignUp={this.signUp.bind(this)}
+                     onChange={this.changeFormData.bind(this)}
+                     onForgotPassword={this.showForgotPassword.bind(this)}
+                    /> : 
                     <ForgotPasswordForm formData={this.state.formData}
                      onSubmit={this.resetPassword.bind(this)}
                      onChange={this.changeFormData.bind(this)}
-                     onSignIn={this.cancelResetPassword.bind(this)}/>}
+                     onSignIn={this.cancelResetPassword.bind(this)}
+                    />
+                }
             </div>
         </div>
         )
