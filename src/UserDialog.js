@@ -110,7 +110,31 @@ export default class UserDialog extends Component{
 
     resetPassword(e){
         e.preventDefault();
-        sendPasswordResetEmail(this.state.formData.email);
+
+        function successFn(success){
+            alert('已发送重置密码邮件到邮箱，请去邮箱检查并重置密码');
+            let stateCopy = copyByJSON(this.state);
+            stateCopy.selectedTab = 'signInOrSignUp';
+            this.setState(stateCopy);
+        };
+
+        function errorFn(error){
+            switch(error.code){
+                case 1:
+                    alert('请不要往同一个邮件地址发送太多邮件');
+                    break;
+                case 205:
+                    alert('找不到使用此邮箱注册的用户')
+                    break;
+            }
+        }
+
+        if(this.state.formData.email.match(/@/) === null){
+            alert('请输入正确的邮箱地址')
+            return
+        }
+
+        sendPasswordResetEmail(this.state.formData.email, successFn.bind(this), errorFn.bind(this));
     }
 
     cancelResetPassword(e){

@@ -116,9 +116,8 @@ export function saveListTable(item, user, successFn, errorFn){
 //找回密码
 export function sendPasswordResetEmail(email, successFn, errorFn){
   AV.User.requestPasswordReset(email).then(function(success){
-    successFn.call();
-  }),function(error){
-    errorFn.call();
-    console.dir(error);
-  }
+    successFn.call(null, success);
+  },function(error){
+    errorFn.call(null, error);
+  })
 }
