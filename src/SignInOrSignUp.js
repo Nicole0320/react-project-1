@@ -25,12 +25,12 @@ export default class SignInOrSignUp extends Component{
                         className={this.state.selected === "signUp" ? "checked" : null}
                         value="signUp" checked={this.state.selected === "signUp"}
                         onChange={this.switch.bind(this)}/>
-                    <label htmlFor="sign-up">注册</label>
+                    <label htmlFor="sign-up"><span className="underline-left"></span>注册<span className="underline-right"></span></label>
                     <input type="radio" id="sign-in" name="nav"
                         className={this.state.selected === "signIn" ? "checked" : null}
                         value="signIn" checked={this.state.selected === "signIn"}
                         onChange={this.switch.bind(this)}/>
-                    <label htmlFor="sign-in">登录</label>
+                    <label htmlFor="sign-in"><span className="underline-left"></span>登录<span className="underline-right"></span></label>
                 </nav>
                 <div className="panes">
                     {this.state.selected === 'signUp' ? 

@@ -10,12 +10,34 @@
     background: #fff;
     padding: 6px 15px;
     margin: 0 5px;
-    border-bottom: 2px solid transparent;
+    position: relative;
 }
 
 .signInOrSignUp nav label:hover{
-    color: #555;
-    animation: borderdisplay 2s infinite; 
+    color: #777;
+}
+
+.signInOrSignUp nav label>.underline-left,
+.signInOrSignUp nav label>.underline-right{
+    display: block;
+    position: absolute;
+    top: 100%;
+    width: 0;
+    height: 2px;
+    background: #ff5555;
+}
+
+.signInOrSignUp nav label>.underline-left{
+    right: 50%;
+}
+
+.signInOrSignUp nav label>.underline-right{
+    left: 50%;
+}
+
+.signInOrSignUp nav label:hover>.underline-right,
+.signInOrSignUp nav label:hover>.underline-left{
+    animation:underline-display 1.5s infinite;
 }
 
 .signInOrSignUp nav>input[type="radio"]{
@@ -25,6 +47,10 @@
 .signInOrSignUp nav>input[type="radio"].checked+label{
     color: #ff5555;
     border-bottom-color: #ff5555;
+}
+
+.signInOrSignUp nav>input[type="radio"].checked+label>span{
+    width: 50%;
 }
 
 .signInOrSignUp .panes{
@@ -54,11 +80,11 @@
     outline-color: #ffcc99;
 }
 
-@keyframes borderdisplay{
+@keyframes underline-display{
     form{
-        border-bottom-color: transparent;
+        width: 0;
     }
     to{
-        border-bottom-color:  #ff9999;
+        width: 50%;
     }
 }
