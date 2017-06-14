@@ -15,7 +15,7 @@
     /*内容居中*/
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 @media (max-aspect-ratio: 1280/960){
@@ -25,6 +25,8 @@
 }
 
 .UserDialog{
+    margin-top: 100px;
+    padding-top: 30px;
     min-width: 20em;
     border: 1px solid #ccc;
     background-color: white;
@@ -32,58 +34,12 @@
     box-shadow: 0 0 1em hsla(0, 0%, 0%, 0.35)
 }
 
-.UserDialog nav:first-child{
-    padding: 1em;
+.UserDialog>h1{
+    text-align: center;
+    color: #ff5555;
+    font-size: 2.5em;
 }
 
-.UserDialog nav:first-child label{
-    cursor: pointer;
-    background: #fff;
-    padding: 6px 15px;
-    border-radius: 3px;
-    margin-left: 10px;
-}
-
-.UserDialog nav:first-child>input[type="radio"]{
-    visibility: hidden;
-}
-
-.UserDialog nav:first-child>input[type="radio"]:not(:first-child){
-    margin-left: 20px;
-}
-
-.UserDialog nav:first-child>input[type="radio"].checked+label{
-    background-color: #ff5555;
-    color: #fff;
-}
-
-.UserDialog .panes{
-    padding: 0 1em 1em;
-}
-
-.UserDialog form>.row{
-    display: flex;
-    padding: 0.3em 0;
-}
-
-.UserDialog form>.row>label:first-child{
-    display: inline-block;
-    width: 4em;
-    /*border: 1px solid red;*/
-}
-
-.UserDialog form>.row>input[type="text"],
-.UserDialog form>.row>input[type="password"]{
-    line-height: 1.2;
-    border: 1px solid #ff9999;
-    box-shadow: inset 0 0 2px 0 #ffaaaa;
-    border-radius: 2px;
-}
-
-.UserDialog form>.row>input[type="text"]:focus,
-.UserDialog form>.row>input[type="password"]:focus{
-    outline-color: #ffcc99;
-}
 
 .UserDialog form>.row.action{
     padding-left: 4em;
