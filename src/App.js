@@ -122,7 +122,7 @@ class App extends Component {
       title: value,
       status: '',
       deleted: false,
-      group: this.state.group
+      group: this.state.currentGroup
     };
 
     function success(num){
