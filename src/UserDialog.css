@@ -31,7 +31,8 @@
     border: 1px solid #ccc;
     background-color: white;
     border-radius: 4px;
-    box-shadow: 0 0 1em hsla(0, 0%, 0%, 0.35)
+    box-shadow: 0 0 1em hsla(0, 0%, 0%, 0.35);
+    padding-bottom: 30px;
 }
 
 .UserDialog>h1{
@@ -40,25 +41,61 @@
     font-size: 2.5em;
 }
 
+.UserDialog .panes{
+    padding: 0 1em 1em;
+}
+
+.UserDialog form>.row{
+    display: flex;
+    padding: 0.3em 0;
+}
+
+.UserDialog form>.row>input[type="text"],
+.UserDialog form>.row>input[type="password"]{
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+    line-height: 2em;
+    border: 1px solid #ff9999;
+    box-shadow: inset 0 0 2px 0 #ffaaaa;
+    border-radius: 2px;
+    padding-left: 5px;
+}
+
+.UserDialog form>.row>input[type="text"]:focus,
+.UserDialog form>.row>input[type="password"]:focus{
+    outline-color: #ffcc99;
+}
 
 .UserDialog form>.row.action{
-    padding-left: 4em;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
 }
 
 .UserDialog form>.action>button{
     cursor: pointer;
-    background: #dadada;
+    background-color: #ff5555;
+    color: #fff;
     border: none;
     padding: 3px 5px;
     border-radius: 3px;
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+    line-height: 2em;
 }
 
 .UserDialog form>.action>button:hover{
-    background-color: #ff5555;
-    color: #fff;
+    opacity: 0.7;
+}
+
+.UserDialog form>.action>button+a{
+    display: block;
+    align-self: flex-start;
+    margin-left: 36px;
+    margin-top: 10px;
 }
 
 .UserDialog .forgotPassword > h3 { 

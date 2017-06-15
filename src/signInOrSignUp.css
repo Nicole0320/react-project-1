@@ -37,7 +37,7 @@
 
 .signInOrSignUp nav label:hover>.underline-right,
 .signInOrSignUp nav label:hover>.underline-left{
-    animation:underline-display 1.5s infinite;
+    animation:underline-display 1.2s infinite;
 }
 
 .signInOrSignUp nav>input[type="radio"]{
@@ -51,33 +51,6 @@
 
 .signInOrSignUp nav>input[type="radio"].checked+label>span{
     width: 50%;
-}
-
-.signInOrSignUp .panes{
-    padding: 0 1em 1em;
-}
-
-.signInOrSignUp form>.row{
-    display: flex;
-    padding: 0.3em 0;
-}
-
-.signInOrSignUp form>.row>label:first-child{
-    display: inline-block;
-    width: 4em;
-}
-
-.signInOrSignUp form>.row>input[type="text"],
-.signInOrSignUp form>.row>input[type="password"]{
-    line-height: 1.2;
-    border: 1px solid #ff9999;
-    box-shadow: inset 0 0 2px 0 #ffaaaa;
-    border-radius: 2px;
-}
-
-.signInOrSignUp form>.row>input[type="text"]:focus,
-.signInOrSignUp form>.row>input[type="password"]:focus{
-    outline-color: #ffcc99;
 }
 
 @keyframes underline-display{

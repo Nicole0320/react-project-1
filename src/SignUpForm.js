@@ -4,20 +4,17 @@ export default function SignUpForm(props){
     return(
         <form className="signUp" onSubmit={props.onSubmit.bind(this)}>
             <div className="row">
-                <label htmlFor="signup-user-name">用户名</label>
-                <input type="text" id="signup-user-name"
+                <input type="text" placeholder="用户名"
                     value={props.formData.username}
                     onChange={props.onChange.bind(null, 'username')}/>
             </div>
             <div className="row">
-                <label htmlFor="signup-password">密码</label>
-                <input type="password" id="signup-password"
+                <input type="password" placeholder="密码（不少于6位）"
                     value={props.formData.password}
                     onChange={props.onChange.bind(null, 'password')}/>
             </div>
             <div className="row">
-                <label htmlFor="signup-email">邮箱</label>
-                <input type="text" id="signup-email"
+                <input type="text" placeholder="邮箱"
                     value={props.formData.email}
                     onChange={props.onChange.bind(null, 'email')}/>
             </div>
