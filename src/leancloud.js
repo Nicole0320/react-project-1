@@ -104,9 +104,9 @@ export function saveListTable(item, user, successFn, errorFn){
    todoList.set('title', item.title);
    todoList.set('status', item.status);
    todoList.set('deleted', item.deleted);
+   todoList.set('group', item.group);
    todoList.save().then(function(todo){
      successFn.call(null,todo.id);
-    //  alert('保存成功');
    },function(error){
      errorFn.call(null);
      alert(error);

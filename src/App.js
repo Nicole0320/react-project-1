@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'normalize.css';
 import './reset.css';
 import './App.css';
+import './../public/iconfont/iconfont.css';
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
 import UserDialog from './UserDialog';
@@ -11,6 +12,7 @@ import {loadList} from './leancloud';
 import {saveListTable} from './leancloud';
 import {updateListTable} from './leancloud';
 import copyByJSON from './copyByJSON';
+import TodoGroup from './TodoGroup';
 
 class App extends Component {
   constructor(props){
@@ -18,6 +20,8 @@ class App extends Component {
     this.state = {
       user: getCurrentUser()||{},
       newTodo: '',
+      groups: [],
+      currentGroup: '',
       todoList: []
     }
   }
@@ -31,10 +35,19 @@ class App extends Component {
 
   initTodoList(){
     function success(list){
-      this.state.todoList = list;
-      this.setState({
-        todoList: this.state.todoList
-      });
+      let stateCopy = copyByJSON(this.state);
+      stateCopy.todoList = list;
+
+      list.forEach(function(element) {
+        if(stateCopy.groups.indexOf(element.group) === -1){
+          stateCopy.groups.push(element.group);
+        }
+      }, this);
+      stateCopy.currentGroup = stateCopy.groups[0];
+
+      this.setState(stateCopy);
+
+      console.log(this.state.currentGroup);
     }
 
     function error(){}
@@ -43,6 +56,7 @@ class App extends Component {
 
   render(){
     let todos = this.state.todoList
+      .filter((item)=>item.group===this.state.currentGroup)
       .filter((item)=>!item.deleted)
       .map((item,index)=>{
         return (
@@ -55,9 +69,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>{this.state.user.username||'我'}的待办
-          {this.state.user.id ? <button onClick={this.signOut.bind(this)}>退出登录</button> : null}
-        </h1>
+        <div className="memu"><i className="iconfont icon-caidan"></i>
+          <h1>{this.state.user.username||'我'}的待办
+            {this.state.user.id ? <button onClick={this.signOut.bind(this)}>退出登录</button> : null}
+          </h1>
+          <TodoGroup groups={this.state.groups}
+            onSwitch={this.switchGroup.bind(this)}/>
+        </div>
         <div className='inputWrapper'>
           <TodoInput content={this.state.newTodo} 
             onChange={this.changeTitile.bind(this)}
@@ -71,6 +89,13 @@ class App extends Component {
             onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
       </div>
     );
+  }
+
+  switchGroup(desGroup){
+    let stateCopy = copyByJSON(this.state);
+    stateCopy.currentGroup = desGroup;
+    this.setState(stateCopy);
+    console.log(this.state.currentGroup);
   }
 
   signOut(e){
@@ -96,7 +121,8 @@ class App extends Component {
       id: null,
       title: value,
       status: '',
-      deleted: false
+      deleted: false,
+      group: this.state.group
     };
 
     function success(num){
