@@ -6,7 +6,7 @@ export default function(props){
     return (
         <form className="TodoInput" onSubmit={addItem.bind(null, props)}>
             <input type="text" className="InputBar"
-                placeholder="添加待办事项..."
+                placeholder={props.placeHolder}
                 value={props.content}
                 onKeyPress={submit.bind(null, props)}
             onChange={changeTitle.bind(null, props)}/>

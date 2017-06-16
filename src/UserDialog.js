@@ -50,7 +50,8 @@ export default class UserDialog extends Component{
                     alert('用户名已经被占用');
                     break;
                 case 125:
-                    alert('请填写邮箱地址');
+                case 205:
+                    alert('请正确填写邮箱地址');
                     break;
                 default:
                     alert(error);

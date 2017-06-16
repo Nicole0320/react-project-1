@@ -20,6 +20,7 @@ class App extends Component {
     this.state = {
       user: getCurrentUser()||{},
       newTodo: '',
+      newGroup: '',
       groups: [],
       currentGroup: '',
       todoList: []
@@ -39,19 +40,25 @@ class App extends Component {
       stateCopy.todoList = list;
 
       list.forEach(function(element) {
-        if(stateCopy.groups.indexOf(element.group) === -1){
+        if(element.group && stateCopy.groups.indexOf(element.group) === -1){
           stateCopy.groups.push(element.group);
         }
-      }, this);
+      }, list);
+
       stateCopy.currentGroup = stateCopy.groups[0];
-
       this.setState(stateCopy);
-
-      console.log(this.state.currentGroup);
     }
 
-    function error(){}
-    loadList(this.state.user.id, success.bind(this), error);
+    function error(){
+      this.addTodo('null', true);
+      let stateCopy = copyByJSON(this.state);
+      stateCopy.currentGroup = '我的待办';
+      this.addGroup.call(this, '我的待办');
+      this.setState(stateCopy);
+      this.initTodoList.call(this);
+    }
+
+    loadList(this.state.user.id, success.bind(this), error.bind(this));
   }
 
   render(){
@@ -69,7 +76,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="memu"><i className="iconfont icon-caidan"></i>
+        <div className="memu">
+          <i className="iconfont icon-caidan"></i>
+            <TodoInput content={this.state.newGroup} 
+            onChange={this.changeGroupTitile.bind(this)}
+            onSubmit={this.addGroup.bind(this)}
+            placeHolder={"新建分组..."}/>
+          <i className="iconfont icon-tianjia"></i>
           <h1>{this.state.user.username||'我'}的待办
             {this.state.user.id ? <button onClick={this.signOut.bind(this)}>退出登录</button> : null}
           </h1>
@@ -79,7 +92,8 @@ class App extends Component {
         <div className='inputWrapper'>
           <TodoInput content={this.state.newTodo} 
             onChange={this.changeTitile.bind(this)}
-            onSubmit={this.addTodo.bind(this)}/>
+            onSubmit={this.addTodo.bind(this)}
+            placeHolder={"添加待办事项..."}/>
         </div>
         <ol className="todoList">
           {todos}
@@ -89,6 +103,17 @@ class App extends Component {
             onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
       </div>
     );
+  }
+
+  addGroup(newGroup){
+    let stateCopy = copyByJSON(this.state);
+    stateCopy.groups.unshift(newGroup);
+    stateCopy.currentGroup = newGroup;
+    stateCopy.newGroup = '';
+    this.setState(stateCopy);
+    
+    //在新分组下添加一个不可见的新事项，以保证在新的分组添加到远程数据库
+    this.addTodo('test', true);
   }
 
   switchGroup(desGroup){
@@ -103,6 +128,8 @@ class App extends Component {
       let stateCopy = copyByJSON(this.state);
       stateCopy.user = {};
       stateCopy.todoList = [];
+      stateCopy.groups = [];
+      stateCopy.currentGroup = '';
       this.setState(stateCopy);
   }
 
@@ -116,12 +143,12 @@ class App extends Component {
   componentDidUpdate(){
   }
 
-  addTodo(value){
+  addTodo(value, isDeleted){
     var newItem = {
       id: null,
       title: value,
       status: '',
-      deleted: false,
+      deleted: isDeleted||false,
       group: this.state.currentGroup
     };
 
@@ -158,6 +185,13 @@ class App extends Component {
     this.setState({
       newTodo: event.target.value,
       todoList: this.state.todoList
+    });
+  }
+
+  changeGroupTitile(event){
+    this.setState({
+      newGroup: event.target.value,
+      currentGroup: event.target.value
     });
   }
 }

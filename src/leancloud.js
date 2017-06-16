@@ -83,8 +83,10 @@ export function loadList(userID, successFn, errorFn){
     successFn.call(null, list);
 
   },function(error){
-    console.log(error);
-    errorFn.call();
+    if(error.code === 101){
+      console.log('没有这个用户表');
+      errorFn.call();
+    }
   });
 }
 
