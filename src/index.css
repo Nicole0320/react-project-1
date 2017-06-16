@@ -7,7 +7,7 @@ body {
   background-color: #fff;
 }
 
-@media (max-aspect-ratio: 1280/854){
+@media (max-aspect-ratio: 1024/683){
     body{
       background-size: auto 100vh;
     }

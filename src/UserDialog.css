@@ -37,7 +37,7 @@
 
 .UserDialog>h1{
     text-align: center;
-    color: #ff5555;
+    color: #db4c3f;
     font-size: 2.5em;
 }
 
@@ -77,7 +77,7 @@
 
 .UserDialog form>.action>button{
     cursor: pointer;
-    background-color: #ff5555;
+    background-color: #db4c3f;
     color: #fff;
     border: none;
     padding: 4px 0;

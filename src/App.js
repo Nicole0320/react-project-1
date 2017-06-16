@@ -117,10 +117,10 @@ class App extends Component {
   }
 
   switchGroup(desGroup){
+    console.log(desGroup);
     let stateCopy = copyByJSON(this.state);
     stateCopy.currentGroup = desGroup;
     this.setState(stateCopy);
-    console.log(this.state.currentGroup);
   }
 
   signOut(e){
