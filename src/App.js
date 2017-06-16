@@ -41,7 +41,7 @@ class App extends Component {
 
       list.forEach(function(element) {
         if(element.group && stateCopy.groups.indexOf(element.group) === -1){
-          stateCopy.groups.push(element.group);
+          stateCopy.groups.unshift(element.group);
         }
       }, list);
 
@@ -76,7 +76,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="memu">
+        <div className="Groups">
           <i className="iconfont icon-caidan"></i>
             <TodoInput content={this.state.newGroup} 
             onChange={this.changeGroupTitile.bind(this)}
@@ -107,7 +107,7 @@ class App extends Component {
 
   addGroup(newGroup){
     let stateCopy = copyByJSON(this.state);
-    stateCopy.groups.unshift(newGroup);
+    stateCopy.groups.push(newGroup);
     stateCopy.currentGroup = newGroup;
     stateCopy.newGroup = '';
     this.setState(stateCopy);
