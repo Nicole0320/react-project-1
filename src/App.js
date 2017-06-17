@@ -76,31 +76,34 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="Groups">
-          <i className="iconfont icon-caidan"></i>
-            <TodoInput content={this.state.newGroup} 
+        <div className="aside">
+          <div className="header">
+            <div className="iconfont icon-caidan"></div>
+            <p>{this.state.user.username||'我'}的待办
+            </p>
+            {this.state.user.id ? <button onClick={this.signOut.bind(this)}>退出</button> : null}
+          </div>
+          <TodoInput content={this.state.newGroup} 
             onChange={this.changeGroupTitile.bind(this)}
             onSubmit={this.addGroup.bind(this)}
-            placeHolder={"新建分组..."}/>
-          <i className="iconfont icon-tianjia"></i>
-          <h1>{this.state.user.username||'我'}的待办
-            {this.state.user.id ? <button onClick={this.signOut.bind(this)}>退出登录</button> : null}
-          </h1>
+            placeHolder={"+ 新建分组..."}/>
           <TodoGroup groups={this.state.groups}
             onSwitch={this.switchGroup.bind(this)}/>
         </div>
-        <div className='inputWrapper'>
-          <TodoInput content={this.state.newTodo} 
-            onChange={this.changeTitile.bind(this)}
-            onSubmit={this.addTodo.bind(this)}
-            placeHolder={"添加待办事项..."}/>
+        <div className="main">
+          <div className='inputWrapper'>
+            <TodoInput content={this.state.newTodo} 
+              onChange={this.changeTitile.bind(this)}
+              onSubmit={this.addTodo.bind(this)}
+              placeHolder={"+ 添加待办事项..."}/>
+          </div>
+          <ol className="todoList">
+            {todos}
+          </ol>
+          {this.state.user.id ? null : <UserDialog
+              onSignUp={this.onSignUpOrSignIn.bind(this)}
+              onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
         </div>
-        <ol className="todoList">
-          {todos}
-        </ol>
-        {this.state.user.id ? null : <UserDialog
-            onSignUp={this.onSignUpOrSignIn.bind(this)}
-            onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
       </div>
     );
   }
@@ -117,7 +120,6 @@ class App extends Component {
   }
 
   switchGroup(desGroup){
-    console.log(desGroup);
     let stateCopy = copyByJSON(this.state);
     stateCopy.currentGroup = desGroup;
     this.setState(stateCopy);

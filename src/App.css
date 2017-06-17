@@ -1,37 +1,71 @@
 .App {
   color: #333;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.7);
-  margin: 2em;
-  padding: 0 1em;
   min-height: 20em;
   min-width: 32em;
-  box-shadow: 0 0 1em hsla(0,0%,0%,0.15);
   font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
+.App>.aside{
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 280px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 
-.App>h1>button{
-  background: #ff9999;
+.App>.aside>.header{
+  background-color: #5b7a59;
+  color: #fcfdfc;
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
+}
+
+.App>.aside>.header>.icon-caidan{
+  font-size: 22px;
+}
+
+.App>.aside>.header>p{
+  font-weight: lighter;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: center;
+  font-size: 17px;
+}
+
+.App>.aside>.header>button{
+  background: transparent;
   color: #fff;
-  border: 1px solid #ff9999;
+  border: none;
   padding: 3px 5px;
-  border-radius: 3px;
-  margin-left: 10px;
   cursor: pointer;
 }
 
-.App>h1>button:hover{
-  box-shadow: 0 0 2px 1px #ffcccc;
-  border: 1px solid #ffaaaa;
-  background-color: #ffaaaa;
+.App>.aside>.header>button:hover{
+  opacity: 0.7;
 }
 
-.App>.todoList>li:nth-child(odd){
+.App>.main{
+  flex-grow: 1;
+  flex-shrink: 1;
+  background: transparent;
+  /*overflow: scroll;*/
+}
+
+.App .todoList>li:nth-child(odd){
   background: #ffdddd;
 }
 
-.App>.todoList>li:nth-child(even){
+.App .todoList>li:nth-child(even){
   background: transparent;
 }

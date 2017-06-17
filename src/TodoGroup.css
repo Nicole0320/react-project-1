@@ -1,0 +1,28 @@
+.TodoGroup{
+  flex-shrink: 1;
+  flex-grow: 1;
+  overflow-x: hidden;
+  min-height: 100px;
+  margin-right: -17px;
+  margin-top: 10px;
+}
+
+.TodoGroup>li{
+    margin: 0;
+    padding:10px;
+    cursor: pointer;
+}
+
+.TodoGroup>li>i{
+    font-weight: 200;
+    font-size: 0.8em;
+    padding-right: 5px;
+}
+
+.TodoGroup>li.active{
+    background: #e0eefa;
+}
+
+.TodoGroup>li.active>i{
+    color: #2b8dec;
+}
