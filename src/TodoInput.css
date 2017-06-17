@@ -40,7 +40,16 @@
     background-color: rgba(164, 178, 135, 0.46);
 }
 
-.main>.inputWrapper>.TodoInput{
-    background-color: #789575;
+.aside>.TodoInput>input[type="text"]{
+    color: #222;
+}
+
+.main .TodoInput{
+    background-color: rgba(120, 149, 117, 0.8);
+}
+
+.main .TodoInput>input[type="text"]{
+    color: #fcfdfc;
+    font-weight: 200;
 }
 

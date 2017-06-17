@@ -91,6 +91,7 @@ class App extends Component {
             onSwitch={this.switchGroup.bind(this)}/>
         </div>
         <div className="main">
+          <h1 className="header">{this.state.currentGroup}</h1>
           <div className='inputWrapper'>
             <TodoInput content={this.state.newTodo} 
               onChange={this.changeTitile.bind(this)}

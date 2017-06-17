@@ -59,7 +59,17 @@
   flex-grow: 1;
   flex-shrink: 1;
   background: transparent;
+  overflow: hidden;
   /*overflow: scroll;*/
+}
+
+.App>.main>.header{
+  font-size: 20px;
+  font-weight: 200;
+  color: #e0eefa;
+  background-color: rgb(102, 137, 100);
+  margin: 0;
+  padding: 13px;
 }
 
 .App .todoList>li:nth-child(odd){
