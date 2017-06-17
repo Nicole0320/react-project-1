@@ -1,7 +1,11 @@
 .TodoItem{
-    padding: 0.5em;
+    border-radius: 4px;
+    margin: 1px;
+    background-color: #fff;
+    padding: 1em;
     display: flex;
     align-items: center;
+    font-size: 15px;
 }
 
 .TodoItem>input[type="checkbox"]{
@@ -28,10 +32,10 @@
 }
 
 .TodoItem i{
-    color: #ff5555;
+    color: #5b7a59;
     cursor: pointer;
 }
 
 .TodoItem i:hover{
-    color: #ffcc99;
+    opacity: 0.7;
 }

@@ -92,15 +92,15 @@ class App extends Component {
         </div>
         <div className="main">
           <h1 className="header">{this.state.currentGroup}</h1>
-          <div className='inputWrapper'>
+          <div className='todos'>
             <TodoInput content={this.state.newTodo} 
               onChange={this.changeTitile.bind(this)}
               onSubmit={this.addTodo.bind(this)}
               placeHolder={"+ 添加待办事项..."}/>
+            <ol className="todoList">
+              {todos}
+            </ol>
           </div>
-          <ol className="todoList">
-            {todos}
-          </ol>
           {this.state.user.id ? null : <UserDialog
               onSignUp={this.onSignUpOrSignIn.bind(this)}
               onSignIn={this.onSignUpOrSignIn.bind(this)}/>}

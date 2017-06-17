@@ -45,7 +45,9 @@
 }
 
 .main .TodoInput{
-    background-color: rgba(120, 149, 117, 0.8);
+    background-color: rgba(120, 149, 117, 0.9);
+    border-radius: 4px;
+    margin-bottom: 15px;
 }
 
 .main .TodoInput>input[type="text"]{
@@ -53,3 +55,12 @@
     font-weight: 200;
 }
 
+.main .TodoInput>button>i{
+    margin-right: 15px;
+    color: rgb(213, 220, 200);
+}
+
+/*placehoder字体颜色*/
+.main .TodoInput ::-moz-placeholder { color: rgb(213, 220, 200); }
+.main .TodoInput ::-webkit-input-placeholder { color:rgb(213, 220, 200); }
+.main .TodoInput :-ms-input-placeholder { color:rgb(213, 220, 200); }

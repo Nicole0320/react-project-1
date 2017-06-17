@@ -60,7 +60,8 @@
   flex-shrink: 1;
   background: transparent;
   overflow: hidden;
-  /*overflow: scroll;*/
+  display: flex;
+  flex-direction: column;
 }
 
 .App>.main>.header{
@@ -70,12 +71,14 @@
   background-color: rgb(102, 137, 100);
   margin: 0;
   padding: 13px;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
-.App .todoList>li:nth-child(odd){
-  background: #ffdddd;
-}
-
-.App .todoList>li:nth-child(even){
-  background: transparent;
+.App>.main>.todos{
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow-y: scroll;
+  margin-right: -17px;
+  padding: 15px;
 }
