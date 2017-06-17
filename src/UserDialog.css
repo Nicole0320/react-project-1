@@ -5,23 +5,16 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background-image: url('./../public/images/bg-sign.jpg');
+    background-image: url('./../public/images/bg-sign.svg');
     background-attachment: fixed;
     background-position: center;
-    background-repeat: no-repeat;
     background-size: 100vw;
-    background-color: rgba(33, 33, 33, 0.2);
+    background-color: #db4c3f;
 
     /*内容居中*/
     display: flex;
     justify-content: center;
     align-items: flex-start;
-}
-
-@media (max-aspect-ratio: 1280/960){
-    .UserDialog-Wrapper {
-      background-size: auto 100vh;
-    }
 }
 
 .UserDialog{
