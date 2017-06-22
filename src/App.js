@@ -136,6 +136,9 @@ class App extends Component {
   }
 
   addGroup(newGroup){
+    if(this.state.groups.indexOf(newGroup) !== -1){
+      return;
+    }
     let stateCopy = copyByJSON(this.state);
     stateCopy.groups.push(newGroup);
     stateCopy.currentGroup = newGroup;
