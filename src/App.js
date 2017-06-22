@@ -137,6 +137,7 @@ class App extends Component {
 
   addGroup(newGroup){
     if(this.state.groups.indexOf(newGroup) !== -1){
+      alert('该分组已经存在，请重新输入分组名');
       return;
     }
     let stateCopy = copyByJSON(this.state);
