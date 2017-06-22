@@ -90,7 +90,8 @@ class App extends Component {
             onSubmit={this.addGroup.bind(this)}
             placeHolder={"+ 新建分组..."}/>
           <TodoGroup groups={this.state.groups}
-            onSwitch={this.switchGroup.bind(this)}/>
+            onSwitch={this.switchGroup.bind(this)}
+            onDelete={this.deleteGroup.bind(this)}/>
         </div> :
         <div className="aside-closed">
           <div className="header"></div>
@@ -113,6 +114,19 @@ class App extends Component {
         </div>
       </div>
     );
+  }
+
+  deleteGroup(groupName){
+    let stateCopy = copyByJSON(this.state);
+    stateCopy.todoList.filter((item) => item.group === groupName)
+      .map((item, index)=>{
+        updateListTable(this.state.user, item.id, 'deleted', true);
+        updateListTable(this.state.user, item.id, 'group', '');
+      })
+    let index = stateCopy.groups.indexOf(groupName);
+    stateCopy.groups.splice(index,1);
+    stateCopy.currentGroup = stateCopy.groups[index % stateCopy.groups.length];
+    this.setState(stateCopy);
   }
 
   hideAside(e){
