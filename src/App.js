@@ -23,6 +23,7 @@ class App extends Component {
       newGroup: '',
       groups: [],
       currentGroup: '',
+      asideOpend: true,
       todoList: []
     }
   }
@@ -76,9 +77,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="aside">
+        <div className="iconfont icon-caidan" onClick={this.hideAside.bind(this)}></div>
+        {this.state.asideOpend ? 
+        <div className="aside-opened">
           <div className="header">
-            <div className="iconfont icon-caidan"></div>
             <p>{this.state.user.username||'我'}的待办
             </p>
             {this.state.user.id ? <button onClick={this.signOut.bind(this)}>退出</button> : null}
@@ -89,7 +91,11 @@ class App extends Component {
             placeHolder={"+ 新建分组..."}/>
           <TodoGroup groups={this.state.groups}
             onSwitch={this.switchGroup.bind(this)}/>
-        </div>
+        </div> :
+        <div className="aside-closed">
+          <div className="header"></div>
+          <div className="first-letter">{this.state.user.username[0]}</div>
+        </div>}
         <div className="main">
           <h1 className="header">{this.state.currentGroup}</h1>
           <div className='todos'>
@@ -107,6 +113,12 @@ class App extends Component {
         </div>
       </div>
     );
+  }
+
+  hideAside(e){
+    let stateCopy = copyByJSON(this.state);
+    stateCopy.asideOpend = !this.state.asideOpend;
+    this.setState(stateCopy);
   }
 
   addGroup(newGroup){

@@ -11,7 +11,7 @@
   bottom: 0;
 }
 
-.App>.aside{
+.App>.aside-opened{
   flex-grow: 0;
   flex-shrink: 0;
   width: 280px;
@@ -21,29 +21,58 @@
   overflow: hidden;
 }
 
-.App>.aside>.header{
+.App>.aside-opened>.header{
   background-color: #5b7a59;
   color: #fcfdfc;
   flex-shrink: 0;
   flex-grow: 0;
   display: flex;
   align-items: center;
-  padding: 12px 10px;
+  padding: 13px 10px;
 }
 
-.App>.aside>.header>.icon-caidan{
+.App>.aside-closed{
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 50px;
+  background-color: #fff;
+}
+
+.App>.aside-closed>.header{
+  background-color: #5b7a59;
+  color: #fcfdfc;
+  height: 49px;
+}
+
+.App>.aside-closed>.first-letter{
+  background-color: #addb81;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 50%;
+  margin: 10px 4px;
+}
+
+.App>.icon-caidan{
   font-size: 22px;
+  color: #fcfdfc;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
 }
 
-.App>.aside>.header>p{
+.App>.aside-opened>.header>p{
   font-weight: lighter;
   flex-grow: 1;
   flex-shrink: 1;
   text-align: center;
   font-size: 17px;
+  margin-left: 30px;
 }
 
-.App>.aside>.header>button{
+.App>.aside-opened>.header>button{
   background: transparent;
   color: #fff;
   border: none;
@@ -51,7 +80,7 @@
   cursor: pointer;
 }
 
-.App>.aside>.header>button:hover{
+.App>.aside-opened>.header>button:hover{
   opacity: 0.7;
 }
 
