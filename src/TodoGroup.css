@@ -10,8 +10,12 @@
 .TodoGroup>li{
     margin: 0;
     padding:10px;
+    padding-right: 40px;
     cursor: pointer;
     position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .TodoGroup>li>.delete-group{
