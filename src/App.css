@@ -70,6 +70,10 @@
   text-align: center;
   font-size: 17px;
   margin-left: 30px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 193px;
 }
 
 .App>.aside-opened>.header>button{
