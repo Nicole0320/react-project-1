@@ -155,7 +155,20 @@ class App extends Component {
     this.initTodoList.call(this);
   }
 
-  componentDidUpdate(){
+  componentDidMount(){
+    window.addEventListener('resize', (function(e){
+      let width = window.innerWidth;
+      if(width<480 && this.state.asideOpend){
+        let stateCopy = copyByJSON(this.state);
+        stateCopy.asideOpend = false;
+        this.setState(stateCopy)
+      }
+      else if(width>=480 && !this.state.asideOpend){
+        let stateCopy = copyByJSON(this.state);
+        stateCopy.asideOpend = true;
+        this.setState(stateCopy)
+      }
+    }).bind(this))
   }
 
   addTodo(value, isDeleted){
