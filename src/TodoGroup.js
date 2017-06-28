@@ -22,15 +22,10 @@ export default class TodoGroup extends Component{
         })
 
         return(
-            <ul className="TodoGroup" onClick={this.switchGroup.bind(this)}
-                onChange={this.onChange.bind(this)}>
+            <ul className="TodoGroup" onClick={this.switchGroup.bind(this)}>
                 {groups}
             </ul>
         )
-    }
-
-    onChange(e){
-        console.log(e.target);
     }
 
     switchGroup(e){
