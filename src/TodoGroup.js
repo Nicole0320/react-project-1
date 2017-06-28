@@ -61,15 +61,14 @@ export default class TodoGroup extends Component{
             }
             let isConfirm = confirm('您的操作将删除该分组下的所有待办事项，是否继续？')
             if(isConfirm){
-                let index = this.props.groups.indexOf(this.state.desGroup);
-                if(index === this.props.groups.length-1){
-                    console.log('last')
-                    document.querySelector('li').setAttribute('class', 'active')
-                }
                 this.setState({
                     desGroup: e.currentTarget.innerText
                 })
                 this.props.onDelete.call(null, e.currentTarget.innerText)
+                let index = this.props.groups.indexOf(e.currentTarget.innerText);
+                if(index === this.props.groups.length-1){
+                    document.querySelector('li').setAttribute('class', 'active')
+                }
             }
             else{
                 return;
